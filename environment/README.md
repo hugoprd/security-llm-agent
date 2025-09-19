@@ -1,0 +1,1 @@
+# Criação / Preparação do ambiente Conda
