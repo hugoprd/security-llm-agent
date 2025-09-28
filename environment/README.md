@@ -15,6 +15,8 @@ conda --version
 
 ### 1.2 Windows.
 
+Mesmo utilizando o terminal Git Bash no VSCode, se você está no Windows, é necessário seguir esses passos.
+
 1. Entre no site `https://www.anaconda.com/download/success` e clique para baixar o Miniconda
 2. Execute o arquivo executável que foi baixado para instalar o Miniconda
 3. Rode este comando no terminal
