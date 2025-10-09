@@ -23,4 +23,5 @@ Mesmo utilizando o terminal Git Bash no VSCode, se você está no Windows, é ne
 ```bash
 cd environment
 conda env create -f environment.yml
+cd ..
 ```

@@ -1,2 +1,4 @@
-# Ignorar o ambiente Conda local do projeto
-securityanalysis/
+environment/.venv/
+__pycache__/
+tests/colab/__pycache__/*
+.env

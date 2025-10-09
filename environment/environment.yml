@@ -1,0 +1,12 @@
+name: security-agent-env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pytest
+  - pip:
+    - black
+    - flake8
+    - pre-commit
