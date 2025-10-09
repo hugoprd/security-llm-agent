@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        // Git
+        "eamodio.gitlens",
+        // Formatação
+        "ms-python.python",
+        "ms-python.black-formatter",
+        "ms-python.flake8"
+    ]
+}
