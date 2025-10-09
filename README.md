@@ -41,6 +41,7 @@ Os testes feitos para este repositório envolvem apenas testes de códigos feito
 ## 3.1. Testes do Google Colab
 
 Os primeiros testes foram feitos através do [Google Colab](https://colab.google/), para ser possível - principalmente - visualizar o agente LLM e montar o código sem ser necessário instalar na máquina local bibliotecas que talvez não fossem ser utilizadas no futuro.
+
 Os testes se encontram na [pasta de testes do Colab](./tests/colab/) e todos os códigos dentro dela não foram testados na versão final do repositório, servindo, assim, apenas para documentação dos testes feitos no Colab.
 
 *Será possível ver pelos, por exemplo, códigos dos testes do Colab que há outras bibliotecas sendo utilizadas para a ambientação em nuvem, como o Ngrok, que não foram utilizadas na versão final do código*
@@ -48,6 +49,7 @@ Os testes se encontram na [pasta de testes do Colab](./tests/colab/) e todos os 
 ## 3.2. Testes de métodos/funções
 
 Os arquivos contidos na [pasta de testes](./tests/), fora da pasta de testes do Colab, são testes relacionados à criação de métodos/funções para o código.
+
 Utilizei do princípio [Test-Driven Development (TDD)](https://pt.wikipedia.org/wiki/Test-driven_development) para o desenvolvimento deste repositório, consistindo onde os testes são escritos antes dos métodos/funções e que funciona em um ciclo curto e repetitivo, conhecido como [Red-Green-Refactor](https://www.codecademy.com/article/tdd-red-green-refactor).
 
 ### 3.2.1. Pytest
