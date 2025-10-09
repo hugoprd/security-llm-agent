@@ -1,6 +1,6 @@
 # Security LLM Agent
 
-Esse repositório serve como submódulo do repositório "risk-security-platform".
+Esse repositório serve como submódulo do repositório [risk-security-platform](https://github.com/hugoprd/risk-security-platform).
 
 Tudo relacionado ao agente LLM e à RAG dele será configurado e executado neste e a partir deste repositório.
 
