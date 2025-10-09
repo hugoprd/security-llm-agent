@@ -23,15 +23,18 @@ Mesmo utilizando o terminal Git Bash no VSCode, se você está no Windows, é ne
 
 1. Entre no site `https://www.anaconda.com/download/success` e clique para baixar o Miniconda
 2. Execute o arquivo executável que foi baixado para instalar o Miniconda
-3. Rode este comando no terminal
+
+## 1.2. Criação do ambiente e ativação do Conda
+
+1. Rode este comando no terminal
     ```bash
     cd environment
     conda env create -f environment.yml --prefix ./.venv
     conda activate ./environment/.venv
     cd ..
     ```
-4. Para confirmar: Faça o comando `CTRL + SHIFT + P` e procure por "Developer: Reload Window"
-5. Se, ao reiniciar, haver algum erro de interpretador, faça o seguinte:
+2. Para confirmar: Faça o comando `CTRL + SHIFT + P` e procure por "Developer: Reload Window"
+3. Se, ao reiniciar, haver algum erro de interpretador, faça o seguinte:
     1. Faça o comando `CTRL + SHIFT + P` e procure por "Python: Select Interpreter"
     2. Selecione o `.venv(3.11.13) .\environment\.venv\python.exe` (irá estar marcado como recomendado)
 
