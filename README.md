@@ -10,7 +10,9 @@ A proposta desse projeto - e especificamente deste agente LLM - é utilizar apen
 
 # 1. Pré-requisitos
 
-- **Conda:** Necessário ter uma distribuição do Conda instalada (seja [Anaconda](https://www.anaconda.com/products/distribution) ou [Miniconda](https://docs.conda.io/en/latest/miniconda.html), que é mais leve e recomendado). Entre em [Instalação Conda](./environment/README.md) para instalar e preparar o ambiente.
+- **Conda:** Necessário ter uma distribuição do Conda instalada (seja [Anaconda](https://www.anaconda.com/products/distribution) ou [Miniconda](https://docs.conda.io/en/latest/miniconda.html), que é mais leve e recomendado). Entre na [preparação do ambiente do projeto](./environment/README.md), na "seção 1", para instalar e preparar o ambiente Conda, assim, possuindo acesso a todas as bibliotecas necessárias.
+
+- **Pytest:** Para conseguir rodar os testes dos métodos/funções corretamente, entre na [preparação do ambiente do projeto](./environment/README.md), na "seção 2.", para configurar corretamente a biblioteca no VSCode. 
 
 # 2. Recursos utilizados
 
@@ -50,4 +52,4 @@ Utilizei do princípio [Test-Driven Development (TDD)](https://pt.wikipedia.org/
 
 ### 3.2.1. Pytest
 
-Para botar em prática o TDD, utilizei a biblioteca [Pytest](https://docs.pytest.org/en/stable/) para a criação dos testes.
+Para botar em prática o TDD, utilizei a biblioteca [Pytest](https://docs.pytest.org/en/stable/) para a criação dos testes. Todos os testes tem o objetivo de testar lógicas dos métodos para que garanta, se houver retorno, o retorno dos valores corretos por aquele método.
