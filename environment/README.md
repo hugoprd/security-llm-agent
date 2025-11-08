@@ -29,14 +29,14 @@ Mesmo utilizando o terminal Git Bash no VSCode, se você está no Windows, é ne
 1. Rode este comando no terminal
     ```bash
     cd environment
-    conda env create -f environment.yml --prefix ./.venv
-    conda activate ./environment/.venv
+    conda env create -f environment.yml
+    conda activate security-agent-env
     cd ..
     ```
 2. Para confirmar: Faça o comando `CTRL + SHIFT + P` e procure por "Developer: Reload Window"
 3. Se, ao reiniciar, haver algum erro de interpretador, faça o seguinte:
     1. Faça o comando `CTRL + SHIFT + P` e procure por "Python: Select Interpreter"
-    2. Selecione o `.venv(3.11.13) .\environment\.venv\python.exe` (irá estar marcado como recomendado)
+    2. Selecione o `security-agent-env (3.11.14) ~\miniconda3\envs\security-agent-env\python.exe` (provavelmente irá estar marcado como recomendado)
 
 # 2. Configuração dos testes
 

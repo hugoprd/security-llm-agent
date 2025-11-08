@@ -10,3 +10,15 @@ dependencies:
     - black
     - flake8
     - pre-commit
+    - python-dotenv
+    - fastapi
+    - uvicorn
+    - langchain
+    - langchain-community
+    - langchain-core
+    - langchain-huggingface
+    - langchain-postgres
+    - langchain-text-splitters
+    - pgvector
+    - psycopg-binary
+    - sentence-transformers
