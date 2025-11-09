@@ -34,6 +34,16 @@ O Hugging Face Spaces é uma - traduzindo literalmente - plataforma como serviç
 
 Neste projeto, tentei focar ao máximo explorar ferramentas e recursos que não conhecia/nunca tinha trabalhado antes com, ou seja, utilizar o serviço do Oracle Cloud era visto como mais interessante, pela necessidade de desenvolver e trabalhar mais em cima dessa plataforma em nuvem e dos containers Dockers. Porém, pelo prazo do trabalho, foi necessário deixar de lado essa tentativa, por enquanto, para a conclusão dele.
 
+## 2.2. Ollama
+
+Ollama é uma ferramenta Open Source que executa LLMs diretamente em uma máquina. Essa característica torna-o uma escolha agradável em relação à privacidade e controle de dados. A escolha de utilizar o Ollama em vez de outra API de LLM (como diretamente com a API do Gemini, por exemplo) se deve ao fato do usuário possuir mais controle dos dados transmitidos e evita possíveis riscos de segurança.
+
+Para conseguir testar o Ollama em sua máquina local, para este projeto, siga as [instruções].(./tests/README.md)
+
+### 2.2.1. Ollama: DeepSeek
+
+A 
+
 # 3. Testes
 
 Os testes feitos para este repositório envolvem apenas testes de códigos feitos para a criação do agente LLM.
