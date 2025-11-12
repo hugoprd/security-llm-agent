@@ -10,8 +10,7 @@ COPY ./start.sh /code/start.sh
 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-COPY ./app.py /code/llm_main/ollama_cloud_manager.py
-
+COPY ./llm_main /code/llm_main/
 RUN chmod +x /code/start.sh
 
 EXPOSE 7860
