@@ -5,6 +5,5 @@ tests/colab/__pycache__/*
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
-test/*
-!test/README.md
-tests/colab/__pycache__/test_ollama_cloud_manager.cpython-311-pytest-8.4.2.pyc
+tests/*
+!tests/README.md
