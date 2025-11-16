@@ -19,6 +19,8 @@ dependencies:
     - langchain-huggingface
     - langchain-postgres
     - langchain-text-splitters
+    - langchain-ollama
+    - pypdf
     - pgvector
     - psycopg-binary
     - sentence-transformers
