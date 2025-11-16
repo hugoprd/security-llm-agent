@@ -68,7 +68,7 @@ class OllamaAgent:
     def _get_template(self) -> str:
         template = """Você é um especialista em análise de riscos de cibersegurança. Com base no
             CONTEXTO abaixo e na ATIVIDADE descrita, identifique o principal risco e sugira uma
-            mitigação.
+            mitigação. Fale apenas em português do Brasil.
 
             CONTEXTO: {context}
             ATIVIDADE: "{question}"
