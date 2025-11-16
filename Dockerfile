@@ -1,11 +1,10 @@
 FROM python:3.11-slim
 
 WORKDIR /code
-RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
 # essa execução é para o docker baixar/instalar o Ollama
 # que é necessário para o funcionamento do código
-RUN apt-get update && apt-get install -y curl && \
+RUN apt-get update && apt-get install -y curl procps && \
     curl -fsSL https://ollama.com/install.sh | sh && \
     rm -rf /var/lib/apt/lists/*
 
