@@ -54,6 +54,12 @@ Para conseguir testar o Ollama em sua máquina local, para este projeto, siga as
 
 O motivo para utilizar a API do DeepSeek é para, principalmente, fins de experimentação de recursos diferentes e por causa do fato do DeepSeek ser open source.
 
+## 2.3. Neon
+
+[Neon](https://neon.com/docs/introduction) é um DBaaS (DataBase as a Service) que fornece um banco de dados Postgres completo e gerenciado, permitindo a concentração de uma aplicação sem uma preocupação com a infraestrutura. Sendo projetado para resolver problemas em nuvem, por ser serveless, foi a escolha ideal para este projeto.
+
+Estarei utilizando o Neon como o banco de dados RAG do agente LLM.
+
 # 3. Testes
 
 Os testes feitos para este repositório envolvem apenas testes de códigos feitos para a criação do agente LLM.
