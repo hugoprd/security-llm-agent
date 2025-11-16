@@ -56,10 +56,11 @@ class OllamaAgent:
         db_connection = PGVector(
             collection_name=self._collection_name,
             connection=self._CONNECTION_STRING,
+            embeddings=self._embedding_model,
             engine_args={"pool_recycle": 300},  # timeout de 5min (300ms)
         )
 
-        return db_connection.as_retriever(search_type="similarity", embedding=self._embedding_model)
+        return db_connection.as_retriever()
 
     def _get_llm_model(self) -> OllamaLLM:
         return OllamaLLM(base_url=self._OLLAMA_BASE_URL, model="deepseek-r1:1.5b")
