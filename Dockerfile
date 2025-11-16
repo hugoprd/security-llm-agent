@@ -9,6 +9,11 @@ RUN apt-get update && apt-get install -y curl && \
     curl -fsSL https://ollama.com/install.sh | sh && \
     rm -rf /var/lib/apt/lists/*
 
+RUN ollama serve & \
+    sleep 5 && \
+    ollama pull deepseek-r1:1.5b && \
+    pkill ollama
+
 COPY ./requirements.txt /code/requirements.txt
 COPY ./start.sh /code/start.sh
 
