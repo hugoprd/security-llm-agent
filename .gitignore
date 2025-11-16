@@ -3,6 +3,6 @@ environment/.venv/
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
-llm_main/_pycache__/*
+llm_main/__pycache__/*
 tests/colab/__pycache__/*
 !tests/README.md
