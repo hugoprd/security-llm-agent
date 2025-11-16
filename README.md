@@ -48,11 +48,11 @@ Neste projeto, tentei focar ao máximo explorar ferramentas e recursos que não 
 
 Ollama é uma ferramenta Open Source que executa LLMs diretamente em uma máquina. Essa característica torna-o uma escolha agradável em relação à privacidade e controle de dados. A escolha de utilizar o Ollama em vez de outra API de LLM (como diretamente com a API do Gemini, por exemplo) se deve ao fato do usuário possuir mais controle dos dados transmitidos e evita possíveis riscos de segurança.
 
-Para conseguir testar o Ollama em sua máquina local, para este projeto, siga as [instruções].(./tests/README.md)
+Para conseguir testar o Ollama em sua máquina local, para este projeto, siga as [instruções](tests/README.md).
 
 ### 2.2.1. Ollama: DeepSeek
 
-A 
+O motivo para utilizar a API do DeepSeek é para, principalmente, fins de experimentação de recursos diferentes e por causa do fato do DeepSeek ser open source.
 
 # 3. Testes
 
