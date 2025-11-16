@@ -1,3 +1,13 @@
+---
+license: mit
+title: Security LLM Agent
+sdk: docker
+emoji: 🌍
+colorFrom: red
+colorTo: purple
+thumbnail: >-
+  https://cdn-uploads.huggingface.co/production/uploads/690f97f9f4fd43db0ac68b78/3QZqA0Z-4Y1X70Rw2vOK1.png
+---
 # Security LLM Agent
 
 Esse repositório serve como submódulo do repositório [risk-security-platform](https://github.com/hugoprd/risk-security-platform).
