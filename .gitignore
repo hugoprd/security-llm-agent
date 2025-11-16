@@ -5,5 +5,6 @@ tests/colab/__pycache__/*
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
-.tests/*
+tests/*
+tests/colab/__pycache__/*
 !tests/README.md
