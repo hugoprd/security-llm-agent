@@ -6,3 +6,4 @@ environment/.venv/
 llm_main/__pycache__/*
 tests/colab/__pycache__/*
 !tests/README.md
+utils/*
