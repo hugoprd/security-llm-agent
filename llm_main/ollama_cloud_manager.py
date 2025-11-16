@@ -96,7 +96,7 @@ class OllamaAgent:
         return self._db.as_retriever()
 
     def _get_llm_model(self) -> OllamaLLM:
-        return OllamaLLM(base_url=self._OLLAMA_BASE_URL, model="deepseek-llm")
+        return OllamaLLM(base_url=self._OLLAMA_BASE_URL, model="deepseek-r1:1.5b")
 
     def _get_template(self) -> str:
         template = """Você é um especialista em análise de riscos de cibersegurança. Com base no
