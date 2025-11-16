@@ -10,8 +10,6 @@ from langchain_ollama import OllamaLLM
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_core.documents import Document
 from langchain_core.runnables import Runnable
 
 load_dotenv()
@@ -24,12 +22,8 @@ class OllamaAgent:
         self._OLLAMA_BASE_URL = self._get_ollama_url()
         self._CONNECTION_STRING = self._get_connection_string()
 
-        self._text_data = self._get_text_data()
-        self._text_splitter = self._get_text_splitter()
-        self._docs = self._get_docs()
         self._embedding_model = self._get_embedding_model()
         self._collection_name = self._get_collection_name()
-        self._db = self._get_db()
         self._retriever = self._get_retriever()
         self._llm_model = self._get_llm_model()
         self._template = self._get_template()
@@ -52,48 +46,21 @@ class OllamaAgent:
 
         return CONNECTION_STRING
 
-    def _get_text_data(self) -> list[str]:
-        text_data = [
-            "Risco de Injeção de SQL (SQL Injection): Ocorre quando um "
-            "atacante insere um código SQL malicioso em uma entrada de dados. "
-            "Mitigação: Use Prepared Statements (consultas parametrizadas) e "
-            "ORMs. Valide e sanitize todas as entradas do usuário "
-            "rigorosamente.",
-            "Risco de Cross-Site Scripting (XSS): Acontece quando um script "
-            "malicioso é injetado em um site confiável. Mitigação: Valide e "
-            "escape todas as entradas de usuário antes de exibi-las no HTML. "
-            "Use Content Security Policy (CSP) para restringir a execução de "
-            "scripts.",
-        ]
-
-        return text_data
-
-    def _get_text_splitter(self) -> RecursiveCharacterTextSplitter:
-        return RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
-
-    def _get_docs(self) -> Document:
-        return self._text_splitter.create_documents(self._text_data)
-
     def _get_embedding_model(self) -> HuggingFaceEmbeddings:
         return HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
     def _get_collection_name(self) -> str:
         return "risk_analysis_docs"
 
-    def _get_db(self) -> PGVector:
-        pgvector = PGVector.from_documents(
+    def _get_retriever(self) -> PGVectorStore:
+        db_connection = PGVector(
             embedding=self._embedding_model,
-            documents=self._docs,
             collection_name=self._collection_name,
             connection=self._CONNECTION_STRING,
-            pre_delete_collection=True,
-            engine_args={"pool_recycle": 300},  # coloca um tempo de "ociosidade" de 300ms (5min)
+            engine_args={"pool_recycle": 300},  # pra ter 5min de delay (300ms)
         )
 
-        return pgvector
-
-    def _get_retriever(self) -> PGVectorStore:
-        return self._db.as_retriever()
+        return db_connection.as_retriever()
 
     def _get_llm_model(self) -> OllamaLLM:
         return OllamaLLM(base_url=self._OLLAMA_BASE_URL, model="deepseek-r1:1.5b")

@@ -54,6 +54,8 @@ Para conseguir testar o Ollama em sua máquina local, para este projeto, siga as
 
 O motivo para utilizar a API do DeepSeek é para, principalmente, fins de experimentação de recursos diferentes e por causa do fato do DeepSeek ser open source.
 
+A escolha da versão do DeepSeek "deepseek-r1:1.5b" é devido ao fato de ser uma versão mais leve, que consiga funcionar com o intuito do projeto da melhor forma possível. Utilizando a versão padrão (4 GB, com 7.5 bilhões de parâmetros), o Hugging Face Space não suportava, pelo menos a versão gratuita.
+
 ## 2.3. Neon
 
 [Neon](https://neon.com/docs/introduction) é um DBaaS (DataBase as a Service) que fornece um banco de dados Postgres completo e gerenciado, permitindo a concentração de uma aplicação sem uma preocupação com a infraestrutura. Sendo projetado para resolver problemas em nuvem, por ser serveless, foi a escolha ideal para este projeto.
