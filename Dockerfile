@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y curl procps && \
 
 RUN ollama serve & \
     sleep 5 && \
-    ollama pull tinyllama && \
+    ollama pull gemma:2b && \
     pkill ollama
 
 COPY ./requirements.txt /code/requirements.txt
