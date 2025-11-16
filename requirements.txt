@@ -5,6 +5,7 @@ langchain-community
 langchain-core
 langchain-postgres
 langchain-huggingface
+langchain-ollama
 sentence-transformers
 python-dotenv
 requests

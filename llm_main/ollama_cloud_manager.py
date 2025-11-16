@@ -6,7 +6,7 @@ from pydantic import BaseModel
 
 from langchain_postgres import PGVector, PGVectorStore
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_community.llms import Ollama
+from langchain_ollama import OllamaLLM
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
@@ -95,8 +95,8 @@ class OllamaAgent:
     def _get_retriever(self) -> PGVectorStore:
         return self._db.as_retriever()
 
-    def _get_llm_model(self) -> Ollama:
-        return Ollama(base_url=self._OLLAMA_BASE_URL, model="deepseek-llm")
+    def _get_llm_model(self) -> OllamaLLM:
+        return OllamaLLM(base_url=self._OLLAMA_BASE_URL, model="deepseek-llm")
 
     def _get_template(self) -> str:
         template = """Você é um especialista em análise de riscos de cibersegurança. Com base no
