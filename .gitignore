@@ -8,7 +8,8 @@ environment/.venv/
 !.vscode/extensions.json
 
 # DOCUMENTOS
-docs/
+docs/*
+!docs/README.md
 
 # CACHE DO PRINCIPAL
 llm_main/__pycache__/*

@@ -60,6 +60,10 @@ O motivo para utilizar a API do DeepSeek é para, principalmente, fins de experi
 
 Estarei utilizando o Neon como o banco de dados RAG do agente LLM.
 
+## 2.4. Base RAG
+
+O conteúdo do banco de dados RAG do agente é mais especificado no [aqui](./docs/README.md).
+
 # 3. Testes
 
 Os testes feitos para este repositório envolvem apenas testes de códigos feitos para a criação do agente LLM.
