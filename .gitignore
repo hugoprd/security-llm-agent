@@ -1,9 +1,18 @@
+# AMBIENTE
 environment/.venv/
 .env
+
+# CONFIGS
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
+
+# CACHE DO PRINCIPAL
 llm_main/__pycache__/*
+
+# TESTES
 tests/colab/__pycache__/*
 !tests/README.md
+
+# UTILS
 utils/*
