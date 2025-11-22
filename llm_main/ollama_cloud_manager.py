@@ -73,17 +73,26 @@ class OllamaAgent:
 
     def _get_template(self) -> str:
         template = """
-            Atue como analista de cibersegurança sênior.
-            Use APENAS o contexto abaixo para responder. Se a resposta não estiver no contexto, diga que não sabe.
-            
-            CONTEXTO: {context}
-            
-            TAREFA: Analise a atividade "{question}".
-            
-            SAÍDA ESPERADA:
-            1. Identifique o Risco Principal.
-            2. Sugira uma Mitigação técnica.
-            Responda em Português do Brasil de forma concisa.
+            Você é um auditor de segurança de aplicações experiente (OWASP).
+            Sua tarefa é analisar a 'ATIVIDADE DO SISTEMA' descrita abaixo e identificar falhas de segurança baseando-se no 'CONTEXTO TÉCNICO' fornecido.
+
+            CONTEXTO TÉCNICO (Base de Conhecimento):
+            {context}
+
+            ATIVIDADE DO SISTEMA (O que está acontecendo):
+            "{question}"
+
+            INSTRUÇÕES DE ANÁLISE:
+            1. Verifique se a atividade viola princípios de autenticação, autorização ou controle de acesso descritos no contexto.
+            2. Se a atividade menciona "sem autenticação" ou "sem login", verifique riscos de Acesso Não Autorizado ou Quebra de Controle de Acesso.
+            3. NÃO invente riscos como XSS ou SQL Injection se eles não forem pertinentes à descrição da atividade.
+
+            FORMATO DA RESPOSTA (Use Markdown):
+            **Risco Identificado:** [Nome do Risco, ex: Quebra de Controle de Acesso, Falha de Identificação]
+            **Análise:** [Explique brevemente por que isso é um risco com base na atividade]
+            **Recomendação:** [Ação prática para corrigir]
+
+            Se o contexto não tiver informações suficientes para julgar, responda apenas: "Não foi possível identificar o risco com base nos documentos fornecidos."
         """
 
         return template
