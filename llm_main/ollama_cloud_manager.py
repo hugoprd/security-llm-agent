@@ -60,19 +60,30 @@ class OllamaAgent:
             engine_args={"pool_recycle": 300},  # timeout de 5min (300ms)
         )
 
-        return db_connection.as_retriever()
+        # tentativa de limitar o kwargs para 3 para não sobrecarregar o modelo pequeno
+        return db_connection.as_retriever(search_kwargs={"k": 3})
 
     def _get_llm_model(self) -> OllamaLLM:
-        return OllamaLLM(base_url=self._OLLAMA_BASE_URL, model="gemma:2b")
+        return OllamaLLM(
+            base_url=self._OLLAMA_BASE_URL,
+            model="qwen2.5:1.5b",
+            temperature=0.3,  # dando menor criatividade para uma resposta mais rápida e direta
+            timeout=300.0,  # 300 segundos (5min) de tolerância
+        )
 
     def _get_template(self) -> str:
-        template = """Você é um especialista em análise de riscos de cibersegurança. Com base no
-            CONTEXTO abaixo e na ATIVIDADE descrita, identifique o principal risco e sugira uma
-            mitigação. Fale apenas em português do Brasil.
-
+        template = """
+            Atue como analista de cibersegurança sênior.
+            Use APENAS o contexto abaixo para responder. Se a resposta não estiver no contexto, diga que não sabe.
+            
             CONTEXTO: {context}
-            ATIVIDADE: "{question}"
-            RESPOSTA:
+            
+            TAREFA: Analise a atividade "{question}".
+            
+            SAÍDA ESPERADA:
+            1. Identifique o Risco Principal.
+            2. Sugira uma Mitigação técnica.
+            Responda em Português do Brasil de forma concisa.
         """
 
         return template
@@ -112,6 +123,19 @@ def generate_suggestion(activity: ActivityRequest):
         return {"suggestion": suggestion}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro: {e}")
+
+
+@app.post("/warmup")
+def warmup_agent():
+    model_instance = ollama_agent._llm_model
+
+    try:
+        # aqui apenas faz uma requisição simples e rápida para forçar o carregamento do modelo
+        model_instance.invoke("Hi")
+
+        return {"status": "Warmup complete", "model": model_instance.model}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Warmup failed: {e}")
 
 
 if __name__ == "__main__":
