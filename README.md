@@ -50,11 +50,23 @@ Ollama é uma ferramenta Open Source que executa LLMs diretamente em uma máquin
 
 Para conseguir testar o Ollama em sua máquina local, para este projeto, siga as [instruções](tests/README.md).
 
-### 2.2.1. Ollama: DeepSeek
+### 2.2.1. Ollama: DeepSeek 1.5:b
 
-O motivo para utilizar a API do DeepSeek é para, principalmente, fins de experimentação de recursos diferentes e por causa do fato do DeepSeek ser open source.
+A versão do DeepSeek "deepseek-r1:1.5b" é devido ao fato de ser uma versão mais leve, que consiga funcionar com o intuito do projeto da melhor forma possível. Utilizando a versão padrão (4 GB, com 7.5 bilhões de parâmetros), o Hugging Face Space não suportava, pelo menos a versão gratuita.
 
-A escolha da versão do DeepSeek "deepseek-r1:1.5b" é devido ao fato de ser uma versão mais leve, que consiga funcionar com o intuito do projeto da melhor forma possível. Utilizando a versão padrão (4 GB, com 7.5 bilhões de parâmetros), o Hugging Face Space não suportava, pelo menos a versão gratuita.
+Tentei utilizá-la com o Hugging Face Space e funcionava, porém não 100% das vezes, com várias vezes tendo um tempo de resposta muito longo ou dando freeze no Hugging Face Space.
+
+Então, optei por usar outro modelo.
+
+### 2.2.2. Ollama: Gemma 2:b
+
+A versão Gemma 2:b, da Google, é - igual ao 1.5:b do DeepSeek - uma versão mais leve, possuindo 2 bilhões de parâmetros no modelo.
+
+Da mesma forma, tentei utilizá-lo com o Hugging Face Space e a situação ficou similar ao modelo do DeepSeek mais leve: algumas vezes funcionava, porém a maioria ou demorava muito ou congelava o espaço do Hugging Face.
+
+### 2.2.3. Ollama: Qwen 2.5 1.5:b
+
+O modelo Qwen foi a escolha ideal para o projeto, com as limitações compreendidas. Mesmo possuindo a mesma quantidade de parâmetros que o do DeepSeek mais leve (1,5 bilhões) ele ainda sim era mais leve, porém, ao mesmo tempo, menos potente. Logo, foi necessário fazer um prompt mais específico para que ele respondesse adequadamente, junto com a RAG dele.
 
 ## 2.3. Neon
 
