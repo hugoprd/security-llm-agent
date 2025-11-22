@@ -56,22 +56,43 @@ class OllamaAgent:
         db_connection = PGVector(
             collection_name=self._collection_name,
             connection=self._CONNECTION_STRING,
+            embeddings=self._embedding_model,
             engine_args={"pool_recycle": 300},  # timeout de 5min (300ms)
         )
 
-        return db_connection.as_retriever(search_type="similarity", embedding=self._embedding_model)
+        # tentativa de limitar o kwargs para 3 para não sobrecarregar o modelo pequeno
+        return db_connection.as_retriever(search_kwargs={"k": 3})
 
     def _get_llm_model(self) -> OllamaLLM:
-        return OllamaLLM(base_url=self._OLLAMA_BASE_URL, model="deepseek-r1:1.5b")
+        return OllamaLLM(
+            base_url=self._OLLAMA_BASE_URL,
+            model="qwen2.5:1.5b",
+            temperature=0.3,  # dando menor criatividade para uma resposta mais rápida e direta
+            timeout=300.0,  # 300 segundos (5min) de tolerância
+        )
 
     def _get_template(self) -> str:
-        template = """Você é um especialista em análise de riscos de cibersegurança. Com base no
-            CONTEXTO abaixo e na ATIVIDADE descrita, identifique o principal risco e sugira uma
-            mitigação. Fale apenas em português do Brasil.
+        template = """
+            Você é um auditor de segurança de aplicações experiente (OWASP).
+            Sua tarefa é analisar a 'ATIVIDADE DO SISTEMA' descrita abaixo e identificar falhas de segurança baseando-se no 'CONTEXTO TÉCNICO' fornecido.
 
-            CONTEXTO: {context}
-            ATIVIDADE: "{question}"
-            RESPOSTA:
+            CONTEXTO TÉCNICO (Base de Conhecimento):
+            {context}
+
+            ATIVIDADE DO SISTEMA (O que está acontecendo):
+            "{question}"
+
+            INSTRUÇÕES DE ANÁLISE:
+            1. Verifique se a atividade viola princípios de autenticação, autorização ou controle de acesso descritos no contexto.
+            2. Se a atividade menciona "sem autenticação" ou "sem login", verifique riscos de Acesso Não Autorizado ou Quebra de Controle de Acesso.
+            3. NÃO invente riscos como XSS ou SQL Injection se eles não forem pertinentes à descrição da atividade.
+
+            FORMATO DA RESPOSTA (Use Markdown):
+            **Risco Identificado:** [Nome do Risco, ex: Quebra de Controle de Acesso, Falha de Identificação]
+            **Análise:** [Explique brevemente por que isso é um risco com base na atividade]
+            **Recomendação:** [Ação prática para corrigir]
+
+            Se o contexto não tiver informações suficientes para julgar, responda apenas: "Não foi possível identificar o risco com base nos documentos fornecidos."
         """
 
         return template
@@ -111,6 +132,19 @@ def generate_suggestion(activity: ActivityRequest):
         return {"suggestion": suggestion}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro: {e}")
+
+
+@app.post("/warmup")
+def warmup_agent():
+    model_instance = ollama_agent._llm_model
+
+    try:
+        # aqui apenas faz uma requisição simples e rápida para forçar o carregamento do modelo
+        model_instance.invoke("Hi")
+
+        return {"status": "Warmup complete", "model": model_instance.model}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Warmup failed: {e}")
 
 
 if __name__ == "__main__":
