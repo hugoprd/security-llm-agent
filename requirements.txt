@@ -6,7 +6,7 @@ langchain-core
 langchain-postgres
 langchain-huggingface
 langchain-ollama
-langchain-google-genai
+langchain-google-genai>=1.0.3
 sentence-transformers
 python-dotenv
 requests
