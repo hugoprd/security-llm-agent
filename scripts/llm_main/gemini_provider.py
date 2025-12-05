@@ -13,9 +13,14 @@ def get_gemini_llm(temperature: float = 0.3):
     print("--- Inicializando Conexão com Google Gemini ---")
 
     return ChatGoogleGenerativeAI(
-        model="gemini-1.5-flash",
+        model="gemini-pro",  # "gemini-1.5-flash",
         google_api_key=api_key,
         temperature=temperature,
-        convert_system_message_to_human=True,  # parametro do modelo do google para
-        # evitar erros de formato de chat
+        convert_system_message_to_human=True,
+        safety_settings={
+            "HARM_CATEGORY_HARASSMENT": "BLOCK_NONE",
+            "HARM_CATEGORY_HATE_SPEECH": "BLOCK_NONE",
+            "HARM_CATEGORY_SEXUALLY_EXPLICIT": "BLOCK_NONE",
+            "HARM_CATEGORY_DANGEROUS_CONTENT": "BLOCK_NONE",
+        },
     )
