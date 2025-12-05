@@ -1,5 +1,5 @@
 import os
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_google_genai import ChatGoogleGenerativeAI, HarmBlockThreshold, HarmCategory
 
 
 def get_gemini_llm(temperature: float = 0.3):
@@ -18,9 +18,9 @@ def get_gemini_llm(temperature: float = 0.3):
         temperature=temperature,
         convert_system_message_to_human=True,
         safety_settings={
-            "HARM_CATEGORY_HARASSMENT": "BLOCK_NONE",
-            "HARM_CATEGORY_HATE_SPEECH": "BLOCK_NONE",
-            "HARM_CATEGORY_SEXUALLY_EXPLICIT": "BLOCK_NONE",
-            "HARM_CATEGORY_DANGEROUS_CONTENT": "BLOCK_NONE",
+            HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
+            HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
+            HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
+            HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
         },
     )
