@@ -6,7 +6,8 @@ langchain-core
 langchain-postgres
 langchain-huggingface
 langchain-ollama
-langchain-google-genai>=1.0.3
+langchain-google-genai>=2.0.0
+google-generativeai>=0.8.0
 sentence-transformers
 python-dotenv
 requests
