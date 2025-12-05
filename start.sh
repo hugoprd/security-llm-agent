@@ -12,6 +12,8 @@ else
     echo "Modo Gemini detectado. O servidor Ollama NÃO será iniciado para economizar memória."
 fi
 
+cd scripts/llm_main
+
 echo "Iniciando a API FastAPI..."
 
-uvicorn scripts.llm_main.risk_analysis_agent:app --host 0.0.0.0 --port 7860
+uvicorn risk_analysis_agent:app --host 0.0.0.0 --port 7860
