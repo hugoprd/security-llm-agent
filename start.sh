@@ -1,8 +1,17 @@
 #!/bin/bash
 
-ollama serve &
+PROVIDER=${LLM_PROVIDER:-ollama}
 
-sleep 3
+echo "--- Iniciando Container no modo: $PROVIDER ---"
 
-echo "Iniciando a API FastAPI com Uvicorn..."
-uvicorn llm_main.ollama_cloud_manager:app --host 0.0.0.0 --port 7860
+if [ "$PROVIDER" = "ollama" ]; then
+    echo "Iniciando servidor Ollama local..."
+    ollama serve &
+    sleep 5
+else
+    echo "Modo Gemini detectado. O servidor Ollama NÃO será iniciado para economizar memória."
+fi
+
+echo "Iniciando a API FastAPI..."
+
+uvicorn scripts.llm_main.risk_analysis_agent:app --host 0.0.0.0 --port 7860

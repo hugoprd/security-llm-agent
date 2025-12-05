@@ -2,8 +2,6 @@ FROM python:3.11-slim
 
 WORKDIR /code
 
-# essa execução é para o docker baixar/instalar o Ollama
-# que é necessário para o funcionamento do código
 RUN apt-get update && apt-get install -y curl procps && \
     curl -fsSL https://ollama.com/install.sh | sh && \
     rm -rf /var/lib/apt/lists/*
@@ -14,12 +12,16 @@ RUN ollama serve & \
     pkill ollama
 
 COPY ./requirements.txt /code/requirements.txt
-COPY ./start.sh /code/start.sh
 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-COPY ./llm_main /code/llm_main/
+COPY ./scripts /code/scripts/
+COPY ./start.sh /code/start.sh
+
 RUN chmod +x /code/start.sh
+
+RUN mkdir -p /code/cache && chmod 777 /code/cache
+ENV HF_HOME=/code/cache
 
 EXPOSE 7860
 
