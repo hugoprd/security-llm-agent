@@ -1,5 +1,5 @@
 import os
-from langchain_google_genai import ChatGoogleGenerativeAI, HarmBlockThreshold, HarmCategory
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 
 def get_gemini_llm(temperature: float = 0.3):
@@ -16,5 +16,4 @@ def get_gemini_llm(temperature: float = 0.3):
         model="gemini-1.5-flash-001",
         google_api_key=api_key,
         temperature=temperature,
-        convert_system_message_to_human=True,
     )
