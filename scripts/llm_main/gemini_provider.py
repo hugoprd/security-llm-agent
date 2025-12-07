@@ -13,7 +13,7 @@ def get_gemini_llm(temperature: float = 0.3):
     print("--- Inicializando Conexão com Google Gemini ---")
 
     return ChatGoogleGenerativeAI(
-        model="gemini-2.0-flash",
+        model="gemini-2.5-flash",
         google_api_key=api_key,
         temperature=temperature,
     )
